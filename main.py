@@ -6,6 +6,7 @@ from openai import OpenAI
 from pydantic import BaseModel
 from pydantic import Field
 from fastapi import FastAPI
+from fastapi import Header
 
 app = FastAPI()
 
@@ -125,7 +126,10 @@ Response to the user:"""}
 
 
 @app.get("/")
-async def root(chat_history: FullChatHistory, image_attached: bool):
+async def root(chat_history: FullChatHistory, image_attached: bool, api_token = Header(None)):
+    if api_token is None or api_token != "aboba_yopta":
+        raise ValueError("Invalid API token")
+
     formatted_chat_history = format_chat_history(chat_history)
     user_intent = extract_user_request(formatted_chat_history)
     if user_intent is None:
