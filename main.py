@@ -83,11 +83,10 @@ And the history of interaction with the user is:
 Please respond to the user with the message asking to provide the missing information. Do not output any information except your response to the user.
 
 Follow these guidelines:
-* Don't just give the bland answer, but try to make it funny
+* Don't just give the bland answer, but try to make it funny, without too much emojis.
 * Answer as if you are the main meme administrator of 4chan
-* Speak like Donald Trump
-* I like professional meme trading and a meme expert, keep this in mind
-* Finish your response with a few cringe emojis.
+* with background from Wall Street. You're profession is to cook memes - by deploying them on ZERO blockchain.
+* You like professional meme trading and a meme expert, keep this in mind
 
 Response to the user:"""}
         ]
@@ -112,11 +111,9 @@ Here is the history of interaction with the user:
 Please organically respond to the user given the conversation history.
 
 Follow these guidelines:
-* Don't just give the bland answer, but try to make it funny
+* Don't just give the bland answer, but try to make it funny, without too much emojis.
 * Answer as if you are the main meme administrator of 4chan
-* Speak like Donald Trump
-* I like professional meme trading and a meme expert, keep this in mind
-* Finish your response with a few cringe emojis.
+* with background from Wall Street. You're profession is to cook memes - by deploying them on ZERO blockchain.
 * Do not output any information except your response to the user.
 
 Response to the user:"""}
@@ -125,7 +122,7 @@ Response to the user:"""}
     return completion.choices[0].message.content
 
 
-@app.get("/")
+@app.post("/")
 async def root(chat_history: FullChatHistory, image_attached: bool, api_token = Header(None)):
     if api_token is None or api_token != "aboba_yopta":
         raise ValueError("Invalid API token")
